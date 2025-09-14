@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary Meta Tags -->
+    <title>Lunai - AI Voice, Branding, Digital Strategy & Creative Services</title>
+    <meta name="title" content="Lunai - AI Voice, Branding, Digital Strategy & Creative Services">
+    <meta name="description" content="Lunai offers cosmic digital excellence with 6 core services: Strategic Branding, Research & Intelligence, Strategy Development, Political Campaigns, Digital Web, and Content/Creative Excellence. Transform your vision with our AI-powered solutions.">
+    <meta name="keywords" content="Strategic Branding, Brand Strategy, Research Intelligence, Market Research, Strategy Development, Business Model Innovation, Political Campaign Excellence, Digital Web Excellence, UX Strategy, Content and Creative Excellence, Professional Copywriting, AI Voice Synthesis, AI Business Analyst">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="author" content="Lunai">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://lunai.com/">
+    <meta property="og:title" content="Lunai - AI Voice, Branding, Digital Strategy & Creative Services">
+    <meta property="og:description" content="Lunai offers cosmic digital excellence across Strategic Branding, Research, Web Development, and Creative Content services.">
+    <meta property="og:image" content="https://lunai.com/og-image.png">
+    <meta property="og:site_name" content="Lunai">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://lunai.com/">
+    <meta property="twitter:title" content="Lunai - AI Voice, Branding, Digital Strategy & Creative Services">
+    <meta property="twitter:description" content="Lunai offers cosmic digital excellence across Strategic Branding, Research, Web Development, and Creative Content services.">
+    <meta property="twitter:image" content="https://lunai.com/twitter-image.png">
+
+    <!-- Additional SEO -->
+    <link rel="canonical" href="https://lunai.com/">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization", 
+      "name": "Lunai",
+      "url": "https://lunai.com",
+      "logo": "https://lunai.com/logo.png",
+      "description": "Cosmic digital excellence through AI voice synthesis and strategic branding",
+      "sameAs": [
+        "https://www.linkedin.com/company/lunai",
+        "https://twitter.com/lunai"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "sales",
+        "email": "hello@lunai.com"
+      }
+    }
+    </script>
+
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Exo+2:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+<body id="top">
+
+    <!-- Voice Panel Toggle Button -->
+    <button id="toggleAudioPanel" class="voice-panel-toggle">🎙️</button>
+
+    <!-- Voice Control Panel (Overlay) -->
+    <div class="voice-control-panel" id="audioPanel">
+        <div class="voice-selection">
+            <h4>Cosmic Voice</h4>
+            <div class="voice-options">
+                <button class="voice-btn active" data-voice="nova">
+                    <span class="voice-name">Nova</span>
+                    <span class="voice-desc">Ethereal</span>
+                </button>
+                <button class="voice-btn" data-voice="stellar">
+                    <span class="voice-name">Stellar</span>
+                    <span class="voice-desc">Futuristic</span>
+                </button>
+                <button class="voice-btn" data-voice="cosmos">
+                    <span class="voice-name">Cosmos</span>
+                    <span class="voice-desc">Deep</span>
+                </button>
+                <button class="voice-btn" data-voice="eclipse">
+                    <span class="voice-name">Eclipse</span>
+                    <span class="voice-desc">Mysterious</span>
+                </button>
+            </div>
+        </div>
+        <div class="audio-settings">
+            <div class="setting-row">
+                <label>Volume</label>
+                <input type="range" id="volumeSlider" class="cosmic-slider" min="0" max="100" value="70">
+                <button id="muteBtn" class="audio-btn">🔊</button>
+            </div>
+        </div>
+        <div class="connection-status">
+            <div class="status-indicator" id="connectionStatus">
+                <span class="status-dot"></span>
+                <span class="status-text">Connecting to Kyutai...</span>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Audio Visualizer -->
+    <div class="audio-visualizer" id="audioVisualizer">
+        <canvas id="visualizerCanvas"></canvas>
+    </div>
+
+    <!-- TTS Status Display -->
+    <div class="tts-status" id="ttsStatus">
+        <div class="speaking-indicator" id="speakingIndicator">
+            <span class="pulse-ring"></span>
+            <span class="speaking-text">✨</span>
+        </div>
+    </div>
+
+    <!-- Starfield Background -->
+    <div class="starfield" id="starfield"></div>
+
+    <!-- Floating Particles -->
+    <div class="particles-container" id="particles"></div>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero">
+        <div class="logo-container">
+            <div class="logo-3d" id="logo3d">
+                <div class="crescent left-crescent"></div>
+                <div class="logo-text" id="logoText">
+                    <span class="letter">L</span>
+                    <span class="letter">U</span>
+                    <span class="letter">N</span>
+                    <span class="letter">A</span>
+                    <span class="letter">I</span>
+                </div>
+                <div class="crescent right-crescent"></div>
+            </div>
+            <div class="logo-backdrop" id="logoBackdrop"></div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title">Eclipse of Tomorrow</h1>
+            <p class="hero-subtitle">Where light meets darkness. Innovation meets elegance.</p>
+            <button class="cta-btn" id="ctaBtn" data-narrate="true">
+                <span>Enter the Eclipse</span>
+                <div class="btn-particles"></div>
+            </button>
+            <div class="voice-trigger">
+                <button class="voice-control-btn" id="voiceWelcome">
+                    🎵 Begin Cosmic Journey
+                </button>
+            </div>
+        </div>
+        <div class="scroll-indicator" data-narrate="true">
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section" id="services" data-narrate="services">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Cosmic Services Excellence</h2>
+                <p class="section-subtitle">Transform your vision into cosmic reality with our comprehensive suite of professional services</p>
+            </div>
+            <div class="services-grid" id="servicesGrid">
+                <!-- Strategic Branding Excellence -->
+                <div class="service-card" data-service="branding" data-aos="float-up" data-delay="0">
+                    <div class="service-icon">⭐</div>
+                    <h3 class="service-title">Strategic Branding Excellence</h3>
+                    <p class="service-description">Elevate your brand identity across all dimensional planes</p>
+                    <div class="service-expand-btn" data-expand="branding">
+                        <span>Explore Services</span>
+                        <div class="expand-arrow">▼</div>
+                    </div>
+                    <div class="service-list" id="brandingServices">
+                        <ul>
+                            <li>Brand Strategy Development</li>
+                            <li>Naming & Identity</li>
+                            <li>Visual Identity + Logo Design</li>
+                            <li>Custom Typography</li>
+                            <li>Comprehensive Brand Guidelines</li>
+                            <li>Verbal Identity Systems</li>
+                            <li>Premium Packaging Design</li>
+                        </ul>
+                    </div>
+                    <div class="card-glow"></div>
+                </div>
+
+                <!-- Strategic Research & Intelligence -->
+                <div class="service-card" data-service="research" data-aos="float-up" data-delay="200">
+                    <div class="service-icon">🔍</div>
+                    <h3 class="service-title">Strategic Research & Intelligence</h3>
+                    <p class="service-description">Deep cosmic insights to guide strategic decisions</p>
+                    <div class="service-expand-btn" data-expand="research">
+                        <span>Explore Services</span>
+                        <div class="expand-arrow">▼</div>
+                    </div>
+                    <div class="service-list" id="researchServices">
+                        <ul>
+                            <li>Market Research & Analysis</li>
+                            <li>Business Intelligence</li>
+                            <li>Brand + Content Audits</li>
+                            <li>Co-Creation Workshops</li>
+                            <li>Survey Development + Analysis</li>
+                            <li>Customer Journey Mapping</li>
+                            <li>Audience + Competitor Intelligence</li>
+                        </ul>
+                    </div>
+                    <div class="card-glow"></div>
+                </div>
+
+                <!-- Comprehensive Strategy Development -->
+                <div class="service-card" data-service="strategy" data-aos="float-up" data-delay="400">
+                    <div class="service-icon">🧭</div>
+                    <h3 class="service-title">Comprehensive Strategy Development</h3>
+                    <p class="service-description">Navigate the cosmic landscape of business innovation</p>
+                    <div class="service-expand-btn" data-expand="strategy">
+                        <span>Explore Services</span>
+                        <div class="expand-arrow">▼</div>
+                    </div>
+                    <div class="service-list" id="strategyServices">
+                        <ul>
+                            <li>Business Model Innovation</li>
+                            <li>Brand & Business Frameworks</li>
+                            <li>Audience + User Profiling</li>
+                            <li>UI/UX Strategy</li>
+                            <li>Digital & Social Media Strategy</li>
+                            <li>Content Strategy</li>
+                            <li>Campaign + Launch Strategy</li>
+                        </ul>
+                    </div>
+                    <div class="card-glow"></div>
+                </div>
+
+                <!-- Political Campaign Excellence -->
+                <div class="service-card" data-service="political" data-aos="float-up" data-delay="600">
+                    <div class="service-icon">🏛️</div>
+                    <h3 class="service-title">Political Campaign Excellence</h3>
+                    <p class="service-description">Stellar campaigns that resonate across all demographics</p>
+                    <div class="service-expand-btn" data-expand="political">
+                        <span>Explore Services</span>
+                        <div class="expand-arrow">▼</div>
+                    </div>
+                    <div class="service-list" id="politicalServices">
+                        <ul>
+                            <li>Political Campaign Strategy</li>
+                            <li>Concept + Creative Development</li>
+                            <li>Marketing & Engagement Strategy</li>
+                            <li>Event Collateral Design</li>
+                            <li>Social Media Asset Development</li>
+                            <li>Editorial Calendar Management</li>
+                        </ul>
+                    </div>
+                    <div class="card-glow"></div>
+                </div>
+
+                <!-- Digital Web Excellence -->
+                <div class="service-card" data-service="digital" data-aos="float-up" data-delay="800">
+                    <div class="service-icon">🌐</div>
+                    <h3 class="service-title">Digital Web Excellence</h3>
+                    <p class="service-description">Cosmic web experiences that transcend digital boundaries</p>
+                    <div class="service-expand-btn" data-expand="digital">
+                        <span>Explore Services</span>
+                        <div class="expand-arrow">▼</div>
+                    </div>
+                    <div class="service-list" id="digitalServices">
+                        <ul>
+                            <li>Information Architecture</li>
+                            <li>UX Strategy</li>
+                            <li>Content Strategy</li>
+                            <li>Accessibility Compliance</li>
+                            <li>Responsive Development</li>
+                            <li>CMS + Back-End Integration</li>
+                        </ul>
+                    </div>
+                    <div class="card-glow"></div>
+                </div>
+
+                <!-- Content + Creative Excellence -->
+                <div class="service-card" data-service="content" data-aos="float-up" data-delay="1000">
+                    <div class="service-icon">✨</div>
+                    <h3 class="service-title">Content + Creative Excellence</h3>
+                    <p class="service-description">Creative content that illuminates across all mediums</p>
+                    <div class="service-expand-btn" data-expand="content">
+                        <span>Explore Services</span>
+                        <div class="expand-arrow">▼</div>
+                    </div>
+                    <div class="service-list" id="contentServices">
+                        <ul>
+                            <li>Strategic Content Development</li>
+                            <li>Professional Copywriting</li>
+                            <li>Editorial Excellence</li>
+                            <li>Video + Animation</li>
+                            <li>Custom Illustration</li>
+                            <li>Data Visualization + Infographics</li>
+                            <li>Professional Photography + Editing</li>
+                            <li>Typography + Design</li>
+                        </ul>
+                    </div>
+                    <div class="card-glow"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI STRATEGIST SECTION -->
+    <section class="ai-strategist-section" id="ai-strategist" data-narrate="aiStrategist">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Discover Your Perfect Solution</h2>
+                <p class="section-subtitle">Our AI Strategist will analyze your needs and craft a personalized service constellation to guide your journey to success.</p>
+            </div>
+            <div class="strategist-interface" id="strategistInterface">
+                <!-- Progress Bar -->
+                <div class="strategist-progress">
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" id="strategistProgressBar"></div>
+                    </div>
+                    <div class="progress-steps">
+                        <div class="progress-step active" data-step="1"><span>1</span> Business Details</div>
+                        <div class="progress-step" data-step="2"><span>2</span> Challenges & Goals</div>
+                        <div class="progress-step" data-step="3"><span>3</span> Your Strategy</div>
+                    </div>
+                </div>
+
+                <!-- Form Steps -->
+                <div class="strategist-form-container">
+                    <!-- Step 1: Business Details -->
+                    <div class="form-step active" id="strategistStep1">
+                        <h3 class="step-title">Tell Us About Your Business</h3>
+                        <div class="form-group">
+                            <label for="businessIndustry">What is your industry?</label>
+                            <select id="businessIndustry" name="business_industry" required>
+                                <option value="" disabled selected>Select an industry...</option>
+                                <option value="tech">Technology & SaaS</option>
+                                <option value="ecommerce">E-commerce & Retail</option>
+                                <option value="healthcare">Healthcare & Wellness</option>
+                                <option value="finance">Finance & FinTech</option>
+                                <option value="politics">Political & Non-Profit</option>
+                                <option value="creative">Creative & Media</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="businessSize">What is your business size?</label>
+                            <select id="businessSize" name="business_size" required>
+                                <option value="" disabled selected>Select a size...</option>
+                                <option value="small">Startup / Small Business (1-50 employees)</option>
+                                <option value="medium">Medium Business (51-500 employees)</option>
+                                <option value="large">Large Enterprise (500+ employees)</option>
+                            </select>
+                        </div>
+                        <div class="form-navigation">
+                            <button type="button" class="cta-btn" id="strategistNext1">Next Step</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Challenges & Goals -->
+                    <div class="form-step" id="strategistStep2">
+                        <h3 class="step-title">Describe Your Challenges & Goals</h3>
+                        <div class="form-group">
+                            <label for="businessChallenges">What are your primary challenges or pain points?</label>
+                            <textarea id="businessChallenges" name="business_challenges" rows="5" placeholder="e.g., 'Our brand feels outdated', 'We're losing customers to competitors', 'Our website isn't converting visitors', 'Need a strategy for our upcoming product launch'..." required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>What are your main goals? (Select all that apply)</label>
+                            <div class="goals-checkboxes">
+                                <label><input type="checkbox" name="goals" value="increase brand awareness"> Increase Brand Awareness</label>
+                                <label><input type="checkbox" name="goals" value="generate more leads"> Generate More Leads</label>
+                                <label><input type="checkbox" name="goals" value="improve user engagement"> Improve User Engagement</label>
+                                <label><input type="checkbox" name="goals" value="launch a new product"> Launch a New Product/Service</label>
+                                <label><input type="checkbox" name="goals" value="win a campaign"> Win a Political/Advocacy Campaign</label>
+                                <label><input type="checkbox" name="goals" value="drive website traffic"> Drive Website Traffic</label>
+                            </div>
+                        </div>
+                        <div class="form-navigation">
+                            <button type="button" class="secondary-btn" id="strategistBack1">Back</button>
+                            <button type="button" class="cta-btn" id="getRecommendationsBtn">Get My Recommendations</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Analysis & Results -->
+                    <div class="form-step" id="strategistStep3">
+                        <div id="strategistLoading" class="strategist-loading">
+                            <div class="cosmic-spinner"></div>
+                            <p>Engaging Cosmic Intelligence...</p>
+                            <span>Analyzing your challenges against our service matrix...</span>
+                        </div>
+                        <div id="strategistResults" class="strategist-results">
+                            <!-- AI Recommendations will be injected here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about" data-narrate="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">About Lunai</h2>
+                <p class="section-subtitle">A cosmic journey into the future of innovation, elegance, and digital serenity.</p>
+            </div>
+            <div class="feature-grid">
+                <div class="feature-card" data-aos="float-up" data-delay="0" data-narrate="cosmic">
+                    <div class="feature-icon">🌌</div>
+                    <h3>Cosmic Innovation</h3>
+                    <p>Pioneering the boundaries of digital experiences with cutting-edge technology</p>
+                    <div class="card-glow"></div>
+                </div>
+                <div class="feature-card" data-aos="float-up" data-delay="200" data-narrate="elegant">
+                    <div class="feature-icon">✨</div>
+                    <h3>Elegant Design</h3>
+                    <p>Where minimalism meets the infinite cosmos in perfect harmony</p>
+                    <div class="card-glow"></div>
+                </div>
+                <div class="feature-card" data-aos="float-up" data-delay="400" data-narrate="future">
+                    <div class="feature-icon">🚀</div>
+                    <h3>Future Vision</h3>
+                    <p>Transforming tomorrow through lunar inspiration and stellar innovation</p>
+                    <div class="card-glow"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Updated Features Section with Ra Lunai AI -->
+    <section class="features-section" id="features" data-narrate="features">
+        <div class="container">
+            <h2 class="section-title">Celestial Technologies</h2>
+            <div class="ra-lunai-container">
+                <div class="ra-lunai-feature" data-aos="float-up" data-delay="0">
+                    <div class="cosmic-icon">🌟</div>
+                    <h3 class="ra-lunai-title">Ra Lunai AI</h3>
+                    <p class="ra-lunai-description">Revolutionary AI system coming soon to transform your digital universe</p>
+                    <div class="coming-soon-badge">Coming Soon</div>
+                    <div class="cosmic-effects">
+                        <div class="cosmic-ring"></div>
+                        <div class="cosmic-particles"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Updated Vision Section with South Indian Testimonials -->
+    <section class="vision-section" id="vision">
+        <div class="container">
+            <h2 class="section-title">Cosmic Testimonials</h2>
+            <div class="testimonials-constellation">
+                <div class="testimonial-star" data-aos="constellation" data-delay="0">
+                    <div class="star-glow"></div>
+                    <div class="testimonial-content">
+                        <p>"Lunai's strategic branding services are unparalleled. They captured our essence and delivered a visual and verbal identity that has truly set us apart. Their process is as innovative as their final product."</p>
+                        <cite>Dr. Priya Krishnamurthy</cite>
+                    </div>
+                </div>
+                <div class="testimonial-star" data-aos="constellation" data-delay="300">
+                    <div class="star-glow"></div>
+                    <div class="testimonial-content">
+                        <p>"The digital web and content excellence from Lunai is phenomenal. They built a cosmic web experience for us, backed by creative content that engages and converts. A truly transformative partnership."</p>
+                        <cite>Rajesh Nair</cite>
+                    </div>
+                </div>
+                <div class="testimonial-star" data-aos="constellation" data-delay="600">
+                    <div class="star-glow"></div>
+                    <div class="testimonial-content">
+                        <p>"For our campaign, Lunai's strategic research and intelligence were game-changing. They provided deep cosmic insights that shaped a winning strategy, proving their excellence in the political campaign arena."</p>
+                        <cite>Kavitha Reddy</cite>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Updated Contact Section with Centered Layout -->
+    <section class="contact-section" id="contact" data-narrate="contact">
+        <div class="container">
+            <div class="contact-platform">
+                <div class="platform-glow"></div>
+                <div class="contact-content">
+                    <h2 class="section-title">Join the Eclipse</h2>
+                    <p class="section-subtitle">Ready to begin your cosmic journey with voice-guided navigation?</p>
+                    
+                    <!-- Enhanced Contact Form with EmailJS -->
+                    <form class="contact-form" id="contactForm" data-emailjs="true">
+                        <!-- Honeypot for spam protection -->
+                        <input type="text" name="honeypot" style="display: none;" tabindex="-1" autocomplete="off">
+                        
+                        <!-- Hidden field for template -->
+                        <input type="hidden" name="to_email" value="your-email@domain.com">
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="text" id="contactName" name="from_name" required data-speak-on-focus="true">
+                                <label for="contactName">Your Name</label>
+                                <div class="input-glow"></div>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" id="contactEmail" name="reply_to" required data-speak-on-focus="true">
+                                <label for="contactEmail">Email Address</label>
+                                <div class="input-glow"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <select id="contactInterest" name="interest_area" required data-speak-on-focus="true">
+                                <option value="">Select Your Interest</option>
+                                <option value="strategic-branding">Strategic Branding Excellence</option>
+                                <option value="research-intelligence">Strategic Research & Intelligence</option>
+                                <option value="strategy-development">Comprehensive Strategy Development</option>
+                                <option value="political-campaigns">Political Campaign Excellence</option>
+                                <option value="digital-web">Digital Web Excellence</option>
+                                <option value="content-creative">Content + Creative Excellence</option>
+                                <option value="other">Other Inquiries</option>
+                            </select>
+                            <label for="contactInterest">Area of Interest</label>
+                            <div class="input-glow"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <textarea id="contactMessage" name="message" rows="4" required data-speak-on-focus="true"></textarea>
+                            <label for="contactMessage">Your Message</label>
+                            <div class="input-glow"></div>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="submit-btn" id="submitBtn">
+                                <span class="btn-text">Launch Your Message</span>
+                                <div class="btn-loading" id="btnLoading">
+                                    <div class="cosmic-spinner"></div>
+                                </div>
+                                <div class="btn-ripple"></div>
+                            </button>
+                        </div>
+                        
+                        <!-- Form Messages -->
+                        <div class="form-message" id="formMessage"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cursor Trail -->
+    <div class="cursor-trail" id="cursorTrail"></div>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <a href="#top" class="footer-logo">LUNAI</a>
+                <p class="footer-tagline">Digital Excellence | Eclipse of Tomorrow</p>
+                <p class="footer-copyright">
+                    © 2025 Lunai. All rights reserved. <br class="mobile-break"> Built with cosmic precision and infinite innovation.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "name": "lunai-landing-page",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "vite"
+  },
+  "devDependencies": {
+    "vite": "^7.1.5"
+  }
+}
