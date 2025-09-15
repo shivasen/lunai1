@@ -1,9 +1,11 @@
+import { createIcons, MapPin, Phone } from 'lucide';
 // Lunai 3D Landing Page - Final Optimized Version with All Requirements
 // REMOVED: Professional Header
 // ADDED: Scrollbar hiding CSS (Confirmed)
 // ENHANCED: AI Business Analyst logic with detailed explanations and sub-service recommendations.
 // FIXED: Audio visualizer simulation for fallback TTS.
 // UPDATED: UI adjustments for voice panel and footer.
+// NEW: Carousel effect for About and Testimonials sections.
 
 // SETUP INSTRUCTIONS FOR EMAILJS:
 // 
@@ -431,7 +433,10 @@ class EnhancedLunaiExperience {
     this.initServicesSection();
     this.initAIStrategist();
     this.initRaLunaiFeature();
+    this.initAboutSection();
     this.initTestimonials();
+    this.initMarquees();
+    this.initLucideIcons();
     this.initResponsiveOptimizations();
     
     // Start the animation loop
@@ -508,6 +513,33 @@ class EnhancedLunaiExperience {
         // Full effects for desktop
         break;
     }
+  }
+
+  initMarquees() {
+    const marqueeTracks = document.querySelectorAll('.marquee-track');
+    marqueeTracks.forEach(track => {
+        // Prevent re-initialization
+        if (track.dataset.marqueeInitialized) return;
+
+        const children = Array.from(track.children);
+        if (children.length > 0) {
+            children.forEach(child => {
+                const clone = child.cloneNode(true);
+                // Remove AOS attributes from clones to prevent re-animation and conflicts
+                clone.removeAttribute('data-aos');
+                track.appendChild(clone);
+            });
+        }
+        
+        track.dataset.marqueeInitialized = 'true';
+    });
+    console.log('Marquee carousels initialized.');
+  }
+
+  initAboutSection() {
+    // This section is now handled by the marquee initializer.
+    // This function is kept for structural consistency.
+    console.log('About section initialized for marquee.');
   }
 
   // Initialize Ra Lunai AI feature
@@ -713,6 +745,17 @@ class EnhancedLunaiExperience {
     }
   }
 
+  initLucideIcons() {
+    if (typeof createIcons !== 'undefined') {
+        createIcons({
+            icons: {
+                MapPin,
+                Phone
+            }
+        });
+    }
+  }
+
   // Initialize EmailJS
   async initEmailJS() {
     const success = await this.emailManager.initialize();
@@ -745,7 +788,6 @@ class EnhancedLunaiExperience {
       // Ensure maximum visibility
       logoText.style.fontFamily = '"Orbitron", monospace';
       logoText.style.fontWeight = '900';
-      logoText.style.letterSpacing = '0.5rem';
       logoText.style.textRendering = 'optimizeLegibility';
     }
     

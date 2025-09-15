@@ -748,7 +748,6 @@ body::after {
   }
   .logo-text {
     font-size: 4rem;
-    letter-spacing: 0.5rem;
   }
   .hero-title {
     font-size: 3rem;
@@ -772,7 +771,6 @@ body::after {
   }
   .logo-text {
     font-size: 3.5rem;
-    letter-spacing: 0.4rem;
   }
   .hero-title {
     font-size: 2.5rem;
@@ -812,7 +810,6 @@ body::after {
   }
   .logo-text {
     font-size: 2.5rem;
-    letter-spacing: 0.2rem;
     -webkit-text-stroke: 2px rgba(255, 255, 255, 0.5);
   }
   .hero-title {
@@ -1263,7 +1260,6 @@ body::after {
   font-family: var(--font-primary);
   font-size: 4rem;
   font-weight: 900;
-  letter-spacing: 0.5rem;
   text-rendering: optimizeLegibility;
   /* Ensure text is visible with fallback */
   color: var(--neon-white);
@@ -1325,24 +1321,7 @@ body::after {
   border-radius: 50%;
   z-index: 5;
 }
-.letter {
-  display: inline-block;
-  animation: letterReveal 2s ease-out forwards;
-  opacity: 0;
-  transform: translateY(50px) rotateX(90deg);
-  transition: all 0.2s ease;
-}
-.letter:nth-child(1) { animation-delay: 0.1s; }
-.letter:nth-child(2) { animation-delay: 0.2s; }
-.letter:nth-child(3) { animation-delay: 0.3s; }
-.letter:nth-child(4) { animation-delay: 0.4s; }
-.letter:nth-child(5) { animation-delay: 0.5s; }
-@keyframes letterReveal {
-  to {
-    opacity: 1;
-    transform: translateY(0) rotateX(0deg);
-  }
-}
+
 /* Crescent Elements */
 .crescent {
   width: 60px;
@@ -1956,10 +1935,7 @@ section {
   background: linear-gradient(180deg, var(--cosmic-navy) 0%, var(--midnight-purple) 100%);
 }
 .feature-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 40px;
-  margin-top: 80px;
+  margin-top: 0;
 }
 .feature-card {
   position: relative;
@@ -1969,15 +1945,11 @@ section {
   border-radius: 20px;
   padding: 40px;
   text-align: center;
-  transform: translateY(100px);
-  opacity: 0;
   transition: all 0.6s ease;
   overflow: hidden;
   cursor: pointer;
-}
-.feature-card.animate {
-  transform: translateY(0);
-  opacity: 1;
+  flex-shrink: 0;
+  width: 380px;
 }
 .feature-card:hover {
   transform: translateY(-10px) scale(1.02);
@@ -2124,21 +2096,14 @@ section {
   position: relative;
 }
 .testimonials-constellation {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 60px;
-  margin-top: 80px;
+  margin-top: 0;
 }
 .testimonial-star {
   position: relative;
   text-align: center;
-  opacity: 0;
-  transform: scale(0);
   transition: all 0.8s ease;
-}
-.testimonial-star.animate {
-  opacity: 1;
-  transform: scale(1);
+  flex-shrink: 0;
+  width: 380px;
 }
 .star-glow {
   position: absolute;
@@ -2178,6 +2143,44 @@ section {
   font-size: 0.9rem;
   font-weight: 600;
 }
+
+/* MARQUEE SLIDER STYLES */
+.marquee {
+  position: relative;
+  width: 100vw;
+  max-width: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.marquee-track {
+  display: flex;
+  will-change: transform;
+  animation: marquee-scroll 40s linear infinite;
+}
+
+.about-section .marquee-track {
+  gap: 40px;
+  padding: 20px 0;
+}
+
+.vision-section .marquee-track {
+  gap: 60px;
+  padding: 20px 0;
+}
+
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
 /* Contact Section - Centered Layout */
 .contact-section {
   background: var(--cosmic-navy);
@@ -2432,10 +2435,10 @@ section {
   animation: particleBurst 1s ease-out forwards;
 }
 
-/* Site Footer */
+/* Site Footer - REFINED 3-COLUMN LAYOUT */
 .site-footer {
     background: var(--cosmic-navy);
-    padding: 4rem 0;
+    padding: 4rem 0 2rem 0;
     border-top: 1px solid var(--glass-border);
     text-align: center;
     position: relative;
@@ -2443,15 +2446,30 @@ section {
 }
 
 .footer-content {
+    display: grid;
+    grid-template-columns: 1fr; /* Mobile first: stacked */
+    gap: 2.5rem;
+    margin-bottom: 2.5rem;
+}
+
+/* Three-column layout for tablet and larger */
+@media (min-width: 768px) {
+    .footer-content {
+        grid-template-columns: repeat(3, 1fr);
+        align-items: flex-start;
+    }
+}
+
+.footer-column {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1.5rem;
+    gap: 1.5rem; /* Increased line spacing */
 }
 
 .footer-logo {
     font-family: var(--font-primary);
-    font-size: 1.75rem;
+    font-size: 2rem; /* Increased from 1.75rem */
     font-weight: 700;
     color: var(--neon-white);
     text-decoration: none;
@@ -2460,16 +2478,47 @@ section {
 }
 
 .footer-tagline {
-    font-size: 1rem;
+    font-size: 1.1rem; /* Increased from 1rem */
     color: rgba(248, 248, 255, 0.8);
     margin: 0;
 }
 
+.footer-address,
+.footer-phone {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: rgba(248, 248, 255, 0.8);
+    font-size: 1rem; /* Increased from 0.9rem */
+    line-height: 1.6;
+    max-width: 300px;
+}
+
+.footer-address i,
+.footer-phone i {
+    color: var(--cyan-glow);
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+}
+
+.footer-phone a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-phone a:hover {
+    color: var(--cyan-glow);
+}
+
 .footer-copyright {
-    font-size: 0.8rem;
+    font-size: 0.9rem; /* Increased from 0.8rem */
     color: rgba(248, 248, 255, 0.5);
     line-height: 1.6;
     margin: 0;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--glass-border);
 }
 
 .mobile-break {
@@ -2480,18 +2529,25 @@ section {
     .site-footer {
         padding: 3rem 1rem;
     }
-    .footer-content {
-        gap: 1.25rem;
+    
+    .footer-address,
+    .footer-phone {
+        flex-direction: column; /* Stack icon and text on mobile */
+        text-align: center;
     }
+
     .footer-logo {
-        font-size: 1.5rem;
+        font-size: 1.75rem; /* Adjust for mobile */
     }
+
     .footer-tagline {
-        font-size: 0.9rem;
+        font-size: 1rem; /* Adjust for mobile */
     }
+
     .footer-copyright {
-        font-size: 0.75rem;
+        font-size: 0.8rem; /* Adjust for mobile */
     }
+
     .mobile-break {
         display: block;
     }

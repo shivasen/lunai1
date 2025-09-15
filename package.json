@@ -5,6 +5,9 @@
   "scripts": {
     "dev": "vite"
   },
+  "dependencies": {
+    "lucide": "^0.395.0"
+  },
   "devDependencies": {
     "vite": "^7.1.5"
   }
