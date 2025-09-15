@@ -346,7 +346,7 @@ class EnhancedLunaiExperience {
     this.emailManager = new EmailManager();
     
     // Voice and audio settings
-    this.currentVoice = 'nova';
+    this.currentVoice = 'stellar';
     this.currentVolume = 0.7;
     this.isMuted = false;
     this.isVoicePanelExpanded = false;
@@ -420,7 +420,7 @@ class EnhancedLunaiExperience {
     this.initKyutaiTTS();
     this.initFallbackTTS();
     this.setupUI();
-    this.createStarfield();
+    // this.createStarfield();
     this.createParticles();
     this.initScrollAnimations();
     this.initEnhancedFormHandling();
@@ -2012,7 +2012,7 @@ class EnhancedLunaiExperience {
   initScrollAnimations() {
     window.addEventListener('scroll', () => {
       this.scrollY = window.pageYOffset;
-      this.updateParallax();
+      // this.updateParallax();
       this.updateLogoFloat();
       this.checkAnimationTriggers();
     });
