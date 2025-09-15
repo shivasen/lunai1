@@ -676,8 +676,8 @@ select.form-control {
   --chrome-dark: #A0A0A0;
   --cyan-glow: #00ffff;
   --neon-white: #f8f8ff;
-  --cosmic-gradient: linear-gradient(135deg, #000000 0%, #0a0a23 50%, #1a0b2e 100%);
-  --glass-bg: rgba(10, 10, 35, 0.5);
+  --cosmic-gradient: linear-gradient(135deg, #000000 0%, #020208 70%, #0a0a23 100%);
+  --glass-bg: rgba(15, 15, 15, 0.5);
   --glass-border: rgba(0, 255, 255, 0.2);
   /* Enhanced TTS Colors */
   --voice-active: #00ff88;
@@ -1473,9 +1473,7 @@ body::after {
 .services-section {
   min-height: 100vh;
   padding: 6rem 0;
-  background: linear-gradient(135deg, 
-    rgba(26, 13, 46, 0.9), 
-    rgba(16, 36, 71, 0.8));
+  background: linear-gradient(135deg, #020208 0%, var(--deep-black) 100%);
   position: relative;
 }
 .services-grid {
@@ -1622,7 +1620,7 @@ body::after {
 
 /* NEW AI STRATEGIST SECTION */
 .ai-strategist-section {
-    background: linear-gradient(180deg, rgba(16, 36, 71, 0.8), var(--cosmic-navy) 100%);
+    background: linear-gradient(180deg, var(--deep-black) 0%, #020208 100%);
     padding: 6rem 0;
     min-height: auto;
 }
@@ -1932,7 +1930,7 @@ section {
 }
 /* About Section */
 .about-section {
-  background: linear-gradient(180deg, var(--cosmic-navy) 0%, var(--midnight-purple) 100%);
+  background: var(--deep-black);
 }
 .feature-grid {
   margin-top: 0;
@@ -1982,7 +1980,7 @@ section {
 }
 /* Ra Lunai AI Feature Section */
 .features-section {
-  background: linear-gradient(180deg, var(--midnight-purple) 0%, var(--deep-black) 100%);
+  background: linear-gradient(180deg, #020208 0%, var(--deep-black) 100%);
 }
 .ra-lunai-container {
   display: flex;
@@ -2092,7 +2090,7 @@ section {
 }
 /* Vision Section with South Indian Testimonials */
 .vision-section {
-  background: linear-gradient(180deg, var(--deep-black) 0%, var(--cosmic-navy) 100%);
+  background: linear-gradient(180deg, var(--deep-black) 0%, #020208 100%);
   position: relative;
 }
 .testimonials-constellation {
@@ -2183,7 +2181,7 @@ section {
 
 /* Contact Section - Centered Layout */
 .contact-section {
-  background: var(--cosmic-navy);
+  background: var(--deep-black);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2437,7 +2435,7 @@ section {
 
 /* Site Footer - REFINED 3-COLUMN LAYOUT */
 .site-footer {
-    background: var(--cosmic-navy);
+    background: var(--deep-black);
     padding: 4rem 0 2rem 0;
     border-top: 1px solid var(--glass-border);
     text-align: center;

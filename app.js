@@ -21,9 +21,9 @@ import { createIcons, MapPin, Phone } from 'lucide';
 // 5. Replace the placeholder values in EMAIL_CONFIG below:
 
 const EMAIL_CONFIG = {
-    publicKey: 'YOUR_PUBLIC_KEY_HERE',     // Replace with your EmailJS public key
-    serviceId: 'YOUR_SERVICE_ID_HERE',     // Replace with your EmailJS service ID
-    templateId: 'YOUR_TEMPLATE_ID_HERE'    // Replace with your EmailJS template ID
+    publicKey: 'HFhe7HkgVcW6lcWNZ',     // Replace with your EmailJS public key
+    serviceId: 'service_jvnfkwk',     // Replace with your EmailJS service ID
+    templateId: 'template_vxw3wec'    // Replace with your EmailJS template ID
 };
 
 // EmailJS Manager Class for Professional Email Handling
@@ -518,22 +518,25 @@ class EnhancedLunaiExperience {
   initMarquees() {
     const marqueeTracks = document.querySelectorAll('.marquee-track');
     marqueeTracks.forEach(track => {
-        // Prevent re-initialization
         if (track.dataset.marqueeInitialized) return;
 
         const children = Array.from(track.children);
         if (children.length > 0) {
             children.forEach(child => {
+                // Remove AOS from original elements to prevent animation conflicts
+                child.removeAttribute('data-aos');
+                // Ensure original elements are visible
+                child.style.opacity = '1';
+                child.style.transform = 'none';
+
                 const clone = child.cloneNode(true);
-                // Remove AOS attributes from clones to prevent re-animation and conflicts
-                clone.removeAttribute('data-aos');
                 track.appendChild(clone);
             });
         }
         
         track.dataset.marqueeInitialized = 'true';
     });
-    console.log('Marquee carousels initialized.');
+    console.log('Marquee carousels initialized and AOS attributes removed.');
   }
 
   initAboutSection() {
